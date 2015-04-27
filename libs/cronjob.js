@@ -45,8 +45,26 @@ exports.sendWishes= function(agenda){
             var employee = _.filter(employeeArray, function(person){
                 return person.DOB == bday; //bday
             }).map(function(person){
-                bdayWishes(person);
+                //bdayWishes(person);
                 //console.log(person.Name);
+
+                var res = nunjucks.renderString(msg[_.random(0,5)],employee);
+                var email = new sendgrid.Email();
+                var subject = "Birthday Wishes to "+ employee.Name;
+                var logmsg = subject + " sent successfully on " + date.getDate()+" " + monthNames[date.getMonth()];
+
+                email.addTo("IS.NG.EVERYONE@za.didata.com");
+                email.setFrom("blessing.michael-lawal@ng.is.co.za");
+                email.setSubject(subject);
+                email.setHtml(res);
+                sendgrid.send(email, function(err, json) {
+                if(err) console.log("i couldn't send");
+
+                console.log(logmsg);
+                });
+
+                //console.log(employee);
+
             });
 
         });
@@ -70,13 +88,15 @@ exports.sendWishes= function(agenda){
         email.setFrom("blessing.michael-lawal@ng.is.co.za");
         email.setSubject(subject);
         email.setHtml(res);
-        sendgrid.send(email, function(err, json) {
-        if(err) console.log("i couldn't send");
+       // sendgrid.send(email, function(err, json) {
+        //if(err) console.log("i couldn't send");
+        //
+        //console.log(logmsg);
+        //});
 
-        console.log(logmsg);
-        });
-
+        console.log(employee);
     }
+
 
 
 

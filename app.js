@@ -15,8 +15,8 @@ Cron.sendWishes(agenda);
 
 
 //agenda.every('24 hours', 'delete old users');
-agenda.every('5 seconds', 'delete old users');
-
+//agenda.every('5 seconds', 'delete old users');
+agenda.schedule('at 9:47', 'delete old users');
 // Alternatively, you could also do:
 
 
