@@ -12,7 +12,7 @@ var url = 'mongodb://localhost:27017/bday';
 //get model
 var Employee = rekuire("Employee");
 
-var sendgrid = require("sendgrid")("internalit", "Sec12ret#");
+var sendgrid = require("sendgrid")("**", "**");
 var nunjucks = require("nunjucks");
 
 var msg= [];
