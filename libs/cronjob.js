@@ -53,8 +53,8 @@ exports.sendWishes= function(agenda){
                 var subject = "Birthday Wishes to "+ employee.Name;
                 var logmsg = subject + " sent successfully on " + date.getDate()+" " + monthNames[date.getMonth()];
 
-                email.addTo("IS.NG.EVERYONE@za.didata.com");
-                email.setFrom("blessing.michael-lawal@ng.is.co.za");
+                email.addTo("***@za.didata.com");
+                email.setFrom("***@ng.is.co.za");
                 email.setSubject(subject);
                 email.setHtml(res);
                 sendgrid.send(email, function(err, json) {
